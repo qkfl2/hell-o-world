@@ -3,6 +3,7 @@
 
 java-7까지는 이런식으로 구현했습니다.
 
+```java
 private static void bubbleSort(int[] intArray) {
     int n = intArray.length;
     int temp = 0;
@@ -17,5 +18,6 @@ private static void bubbleSort(int[] intArray) {
         }
     }
 }
+```
 
 {본인 이름}.java로 올려주세요.
