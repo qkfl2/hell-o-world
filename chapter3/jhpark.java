@@ -15,14 +15,14 @@ public class Main {
         System.out.println(
             Files.list(Paths.get(""))
                     .filter(Chapter3Helper::checkTestFile)
-                    .flatMap(Chapter3Helper::byLines)
+                    .flatMap(Chapter3Helper::fileToLines)
                     .collect(Collectors.groupingBy(Chapter3Helper::getDomain, Collectors.counting()))
         );
 
     }
 
     private interface Chapter3Helper {
-        static Stream<String> byLines(Path path) {
+        static Stream<String> fileToLines(Path path) {
             try { 
                 return Files.lines(path); 
             } catch (IOException e) { throw new UncheckedIOException(e); }
