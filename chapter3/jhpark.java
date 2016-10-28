@@ -1,11 +1,12 @@
 package com.company;
 
 import java.io.IOException;
+import java.io.UncheckedIOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.function.Function;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Main {
 
@@ -14,28 +15,18 @@ public class Main {
         System.out.println(
             Files.list(Paths.get(""))
                     .filter(Chapter3Helper::checkTestFile)
-                    .flatMap(Chapter3Helper.throwWrapper(Files::lines))
+                    .flatMap(Chapter3Helper::lines)
                     .collect(Collectors.groupingBy(Chapter3Helper::getDomain, Collectors.counting()))
         );
 
     }
 
-    @FunctionalInterface
-    private interface Chapter3Helper<T,R> extends Function<T,R> {
-        @Override
-        default R apply(T t) {
+    private interface Chapter3Helper {
+        static Stream<String> lines(Path path) {
             try {
-                return throwingApply(t);
-            } catch (Exception e) {
-                throw new RuntimeException(e);
-            }
+                return Files.lines(path);
+            } catch (IOException e) { throw new UncheckedIOException(e); }
         }
-
-        static<T,R> Function<T,R> throwWrapper(Chapter3Helper<T,R> f) {
-            return f;
-        }
-
-        R throwingApply(T t) throws Exception;
 
         static boolean checkTestFile(Path path) {
             return path.toString().matches("[1-3].txt");
