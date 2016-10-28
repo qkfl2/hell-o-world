@@ -28,6 +28,7 @@ boolean isTextPalindrome(@NonNull String text) {
 flatmap 도 이용하면 좋을 것 같습니다.(파일을 나눠 보았습니다.)
 
 ### 4 챕터 문제
+
 to be continued...
 ---
 결과는 {본인 이름}.java로 올려주세요.
