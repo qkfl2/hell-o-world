@@ -2,12 +2,12 @@
 아래의 코드 예시처럼 원하는 재료들을 추가해서 비비면 
 비빔밥이 완성되도록 데코레이터 패턴을 이용하여 출력해 봅시다.
 
-Bibimbap bibimbap = new Bibimbap();
-bibimbap.addMaterial(재료::콩나물, 재료::고추장);
-System.out.println(bibimbap.mix());
+> Bibimbap bibimbap = new Bibimbap();
+> bibimbap.addMaterial(재료::콩나물, 재료::고추장);
+> System.out.println(bibimbap.mix());
 
 완성된 비빔밥에 대한 출력은 다음과 같이 나열해 봅니다.
-"재료명1 재료명2 ... 비빔밥"
+> "재료명1 재료명2 ... 비빔밥"
 
 콩나물, 고추장 추가
 > 콩나물 고추장 비빔밥
