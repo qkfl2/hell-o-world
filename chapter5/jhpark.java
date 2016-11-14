@@ -15,7 +15,6 @@ import java.util.stream.Stream;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-
         try (final BufferedWriter writer = Files.newBufferedWriter(Paths.get("jhpark.txt"))) {
             Fan.streamFromFiles(Files.list(Paths.get("")))
                     .filter(fan -> fan.age >= 20)
@@ -23,7 +22,6 @@ public class Main {
                     .filter(fan -> fan.isUniqueEmail)
                     .forEach(fan -> fan.sendCongratulation(writer));
         }
-
     }
 
     private static final class Fan {
@@ -37,8 +35,7 @@ public class Main {
         private Fan(String name, String email, String birthday) {
             this.name = name;
             this.email = email;
-            this.age = Chapter5Helper.isValidDate(birthday)
-                    ? LocalDateTime.now().getYear() - Integer.valueOf(birthday.split("-")[0]) : 0;
+            this.age = Chapter5Helper.isValidDate(birthday) ? calcAge(birthday) : 0;
             this.isUniqueEmail = sEmails.add(email);
         }
 
@@ -57,6 +54,9 @@ public class Main {
             } catch (IOException e) {
                 throw new UncheckedIOException(e);
             }
+        }
+        private int calcAge(String birthday) {
+            return LocalDateTime.now().getYear() - Integer.valueOf(birthday.split("-")[0]);
         }
     }
 
