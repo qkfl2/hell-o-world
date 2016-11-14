@@ -19,7 +19,7 @@ public class Main {
             Fan.streamFromFiles(Files.list(Paths.get("")))
                     .filter(fan -> fan.age >= 20)
                     .filter(fan -> fan.email.contains("girl"))
-                    .filter(fan -> fan.isUniqueEmail)
+                    .filter(fan -> fan.isEmailUnique)
                     .forEach(fan -> fan.sendCongratulation(writer));
         }
     }
@@ -30,13 +30,13 @@ public class Main {
         private final String name;
         private final String email;
         private final int age;
-        private final boolean isUniqueEmail;
+        private final boolean isEmailUnique;
 
         private Fan(String name, String email, String birthday) {
             this.name = name;
             this.email = email;
             this.age = Chapter5Helper.isValidDate(birthday) ? calcAge(birthday) : 0;
-            this.isUniqueEmail = sEmails.add(email);
+            this.isEmailUnique = sEmails.add(email);
         }
 
         private static Stream<Fan> streamFromFiles(Stream<Path> pathStream) {
