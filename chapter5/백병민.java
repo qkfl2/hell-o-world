@@ -12,7 +12,7 @@ import java.util.stream.Stream;
 public class Test {
 	public static void main(String[] args) throws IOException {
 		Files.list(Paths.get("D:\\a"))
-				.flatMap(path -> getContents(path))
+				.flatMap(path -> 파일에서내용읽기(path))
 				.filter(line -> 이메일과나이검사(line)) // girl 포함 여부, 나이 검사
 				.collect(Collectors.groupingBy(line -> line.split(" ")[1], Collectors.toList())) // 중복 검사를 위해 그룹핑 
 				.entrySet()
@@ -46,7 +46,7 @@ public class Test {
 		return false;
 	}
 
-	private static Stream<String> getContents(Path path) {
+	private static Stream<String> 파일에서내용읽기(Path path) {
 		try {
 			return Files.lines(path);
 		} catch (Exception e) {
