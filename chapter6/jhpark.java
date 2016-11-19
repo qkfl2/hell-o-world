@@ -1,17 +1,17 @@
 package com.company;
 
-import java.util.HashSet;
-import java.util.Set;
+import com.sun.tools.javac.util.Pair;
+
 import java.util.stream.LongStream;
 import java.util.stream.Stream;
 
 public class Main {
     public static void main(String[] args) {
-        Stream.iterate(new long[] {1, 1}, p -> new long[] {p[1], p[0] + p[1]})
-                .filter(p -> p[0] > 100000)
-                .filter(p -> isPrime(p[0]))
+        Stream.iterate(new Pair<>(1L, 1L), p -> new Pair<>(p.snd, p.fst + p.snd))
+                .filter(p -> p.fst > 100000)
+                .filter(p -> isPrime(p.fst))
                 .findFirst()
-                .ifPresent(i -> System.out.println(i[0]));
+                .ifPresent(p -> System.out.println(p.fst));
     }
 
     private static boolean isPrime(final long p) {
