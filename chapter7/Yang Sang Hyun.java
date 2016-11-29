@@ -9,7 +9,6 @@ public class Chapter7 {
 		if( 남은_아이스크림_그램 <= 10 ){
 			return TailCalls.done(몇번했는지);
 		} else {
-			System.out.println(남은_아이스크림_그램);
 			return TailCalls.call( () ->먹은_갯수_반환( (남은_아이스크림_그램 - (남은_아이스크림_그램 * 한번_핱으면_줄어드는량))  , (몇번했는지 + 1)));
 		}
 	}
