@@ -1,14 +1,18 @@
+File tree traversal
+
 ```java
 Files.walk(Paths.get("")).forEach(System.out::println);
 ```
 
+Files.java
 ```java
 public static Stream<Path> walk(Path start,
                                     int maxDepth,
                                     FileVisitOption... options) throws IOException {
     FileTreeIterator iterator = new FileTreeIterator(start, maxDepth, options);
     try {
-        return StreamSupport.stream(Spliterators.spliteratorUnknownSize(iterator, Spliterator.DISTINCT), false)
+        return StreamSupport.stream(
+            Spliterators.spliteratorUnknownSize(iterator, Spliterator.DISTINCT), false)
                             .onClose(iterator::close)
                             .map(entry -> entry.file());
     } catch (Error|RuntimeException e) {
@@ -18,6 +22,8 @@ public static Stream<Path> walk(Path start,
 }
     
 ```
+
+FileTreeIterator.java
 
 ```java
 class FileTreeIterator implements Iterator<Event>, Closeable {
@@ -65,6 +71,8 @@ class FileTreeIterator implements Iterator<Event>, Closeable {
 }
 ```
 
+FileTreeWalker.java
+
 ```java
 class FileTreeWalker implements Closeable {
 
@@ -78,7 +86,7 @@ class FileTreeWalker implements Closeable {
         return new Event(EventType.START_DIRECTORY, entry, attrs);
     }
     ...
-  Event next() {
+  private Event next() {
         DirectoryNode top = stack.peek();
         if (top == null)
             return null;      // stack is empty, we are done
