@@ -15,7 +15,7 @@ public class Main {
 
     public static void main(String[] args) {
         numberCombinations()
-                .map(it -> Kaprekar.calc(it, 1).invoke())
+                .map(it -> Kaprekar.calc(it, 0).invoke())
                 .max(Comparator.comparing(String::valueOf))
                 .ifPresent(System.out::println);
     }
