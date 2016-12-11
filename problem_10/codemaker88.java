@@ -17,22 +17,22 @@ public class CollatzConjecture {
         System.out.println("time : " + (System.currentTimeMillis() - startTime));
     }
 
-    public TailCall<String> find(final int depth, final StringBuilder result, final List<Long> BFSQueue) {
+    public TailCall<String> find(final int depth, final StringBuilder result, final List<Long> friendList) {
 
-        if(depth <= 1) {
+        if (depth <= 1) {
             return TailCalls.done(result.toString());
         } else {
-            findNext(BFSQueue);
-            //System.out.println("CollatzList : " + "(" + (BFSQueue.size()) + ")" + BFSQueue);
-            result.append(BFSQueue.size());
+            findNext(friendList);
+            //System.out.println("CollatzList : " + "(" + (friendList.size()) + ")" + friendList);
+            result.append(friendList.size());
             result.append(", ");
-            return TailCalls.call( () -> find(depth - 1, result, BFSQueue) );
+            return TailCalls.call(() -> find(depth - 1, result, friendList));
         }
     }
 
     public void findNext(final List<Long> currentCollatzList) {
 
-        Queue<Long> temp = new ArrayDeque<>();
+        List<Long> temp = new ArrayList<>();
 
         temp.addAll(currentCollatzList);
         currentCollatzList.clear();
