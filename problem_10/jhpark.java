@@ -21,7 +21,7 @@ public class Main {
             final Queue<Long> nextChildren = new ArrayDeque<>(currentChildren.size() * 2);
 
             currentChildren.stream()
-                    .map(it -> { addChild(nextChildren, it * 2); return it; })
+                    .peek(it -> addChild(nextChildren, it * 2))
                     .filter(it -> (it % 3 == 1) && (it % 2 == 0))
                     .forEach(it -> addChild(nextChildren, (it - 1) / 3));
 
