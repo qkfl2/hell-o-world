@@ -14,8 +14,8 @@ public class Main {
     }
 
     private static class Bfs {
-        static final HashSet<Long> cache = new HashSet<>();
         static Queue<Long> currentChildren = new ArrayDeque<>(Collections.singletonList(1L));
+        static final HashSet<Long> cache = new HashSet<>(currentChildren);
 
         static long nextLevelFriends() {
             final Queue<Long> nextChildren = new ArrayDeque<>(currentChildren.size() * 2);
