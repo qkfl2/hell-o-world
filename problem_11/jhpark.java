@@ -9,9 +9,6 @@ import java.util.stream.Collectors;
 public class Main {
 
     public static void main(String[] args)  {
-        final List<Class<? extends Gamer> > gamerClasses
-                = Lists.newArrayList(시민.class, 무법자.class, 정신병자.class);
-
         final LinkedList<Gamer> gamers = Lists.newArrayList(1, 0, 1, 1, 0, 0, 2, 0, 0)
                 .stream()
                 .map(Main::fromValue)
@@ -21,7 +18,7 @@ public class Main {
             for (int i = 0; i < gamers.size(); i++) {
                 i = gamers.get(i).shot(gamers, i);
 
-                gamerClasses.stream()
+                Lists.newArrayList(시민.class, 무법자.class, 정신병자.class).stream()
                         .filter(it -> isWinner(gamers, it))
                         .findFirst()
                         .ifPresent(it -> {
@@ -31,7 +28,6 @@ public class Main {
             }
         }
     }
-
 
     static boolean isWinner(List<Gamer> gamers, Class<? extends Gamer> theClass) {
         if (theClass.equals(시민.class)) {
@@ -127,5 +123,4 @@ public class Main {
             gamers.remove(index);
         }
     }
-
 }
