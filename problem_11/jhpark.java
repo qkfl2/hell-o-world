@@ -9,10 +9,10 @@ import java.util.stream.Collectors;
 public class Main {
 
     public static void main(String[] args)  {
-        List<Class<? extends Gamer> > gamerClasses
+        final List<Class<? extends Gamer> > gamerClasses
                 = Lists.newArrayList(시민.class, 무법자.class, 정신병자.class);
 
-        LinkedList<Gamer> gamers = Lists.newArrayList(1, 0, 1, 1, 0, 0, 2, 0, 0)
+        final LinkedList<Gamer> gamers = Lists.newArrayList(1, 0, 1, 1, 0, 0, 2, 0, 0)
                 .stream()
                 .map(Main::fromValue)
                 .collect(Collectors.toCollection(LinkedList::new));
