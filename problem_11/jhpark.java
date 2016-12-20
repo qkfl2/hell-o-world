@@ -10,7 +10,7 @@ public class Main {
 
     public static void main(String[] args)  {
         final LinkedList<Gamer> gamers = Lists.newArrayList(1, 0, 1, 1, 0, 0, 2, 0, 0).stream()
-                .map(Gamers::fromValue)
+                .map(Gamer::fromValue)
                 .collect(Collectors.toCollection(LinkedList::new));
 
         while (!gamers.isEmpty()) {
