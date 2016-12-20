@@ -10,7 +10,7 @@ public class Main {
 
     public static void main(String[] args)  {
         final LinkedList<Gamer> gamers = Lists.newArrayList(1, 0, 1, 1, 0, 0, 2, 0, 0).stream()
-                .map(Main::fromValue)
+                .map(Gamers::fromValue)
                 .collect(Collectors.toCollection(LinkedList::new));
 
         while (!gamers.isEmpty()) {
@@ -40,10 +40,6 @@ public class Main {
         }
     }
 
-    static Gamer fromValue(int value) {
-        return value == 0 ? new 시민() : value == 1 ? new 무법자() : new 정신병자();
-    }
-
     static abstract class Gamer {
         int killCnt = 0;
 
@@ -60,6 +56,10 @@ public class Main {
 
         int next(List<Gamer> gamers, int index) {
             return index == gamers.size() - 1 ? 0 : index + 1;
+        }
+        
+        static Gamer fromValue(int value) {
+            return value == 0 ? new 시민() : value == 1 ? new 무법자() : new 정신병자();
         }
     }
 
