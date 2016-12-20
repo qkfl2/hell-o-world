@@ -86,7 +86,6 @@ public class Chapter11 {
     public String 종료조건확인(final 사람 현재) {
         String result = null;
 
-        //시민만 남은경우
         int 남은사람수 = 1;
         for (사람 인덱스 = 현재.get오른쪽(); 인덱스 != 현재; 남은사람수++, 인덱스 = 인덱스.get오른쪽()) {
         }
