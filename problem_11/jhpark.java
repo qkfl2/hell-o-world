@@ -9,8 +9,7 @@ import java.util.stream.Collectors;
 public class Main {
 
     public static void main(String[] args)  {
-        final LinkedList<Gamer> gamers = Lists.newArrayList(1, 0, 1, 1, 0, 0, 2, 0, 0)
-                .stream()
+        final LinkedList<Gamer> gamers = Lists.newArrayList(1, 0, 1, 1, 0, 0, 2, 0, 0).stream()
                 .map(Main::fromValue)
                 .collect(Collectors.toCollection(LinkedList::new));
 
