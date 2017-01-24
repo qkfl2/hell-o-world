@@ -1,6 +1,6 @@
 import java.io.File
 
-object HelloWorld {
+object Chapter3 {
   def main(args: Array[String]) {
     println(new File(".").listFiles.toList
       .filter(_.getName.matches("[1-3].txt"))
