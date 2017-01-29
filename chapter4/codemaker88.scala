@@ -26,9 +26,6 @@ class Chapter4 {
       return 재료들.apply("비빔밥");
     }
     
-    def 비빔밥명(x : String) : String = {
-      return "비빔밥"
-    }
   }
   
   sealed abstract case class 재료(재료명 : String) {
