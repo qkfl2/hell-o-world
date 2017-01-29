@@ -19,7 +19,7 @@ class Chapter4 {
     var 재료들 : Function1[String, String] = null
     
     def addMaterial(materialList : Function1[String, String]*) {
-      재료들 = materialList.reduceRight(_ compose _)
+      재료들 = materialList.reduce(_ compose _)
     }
     
     def mix() : String = {
